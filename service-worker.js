@@ -10,7 +10,6 @@ let urlsToCache = [
   "/favicon/apple-touch-icon.png",
   "/favicon/favicon-16x16.png",
   "/favicon/favicon-32x32.png",
-  "/favicon/MJK618-avtar.png",
   "/assets/icons/icon-48x48.png",
   "/assets/icons/icon-72x72.png",
   "/assets/icons/icon-96x96.png",
