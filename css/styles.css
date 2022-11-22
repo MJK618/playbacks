@@ -1,0 +1,55 @@
+hr {
+    border: 1px solid #23027C;
+}
+
+html {
+    --scrollbarBG: #f4c430;
+    --thumbBG: #23027C;
+}
+
+body::-webkit-scrollbar {
+    width: 11px;
+}
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+}
+
+
+html {
+    background: #f4c430;
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    overflow-y: auto;
+    margin: 0 auto;
+    font: 100%/1.4 serif;
+    border: 5px solid #f4c430;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        height: 90vh;
+    }
+}
+
+font {
+    color: #23027C;
+}
+
+a.no-underline {
+    text-decoration: none;
+}
