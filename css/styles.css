@@ -36,7 +36,8 @@ body {
     height: 100vh;
     overflow-y: auto;
     margin: 0 auto;
-    font: 100%/1.4 serif;
+    font: 100%/1.4;
+    font-family: Verdana;
     border: 5px solid #f4c430;
 }
 
