@@ -22,6 +22,8 @@ let urlsToCache = [
   "/css/styles.css",
   "/service-worker.js",
   "js/handler.js",
+  "youtube/index.html",
+  "yt/index.html"
 ];
 
 // Cache all the selected items once application is installed.
