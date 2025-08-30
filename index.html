@@ -108,17 +108,33 @@
       <center>
             <font>
                   <a class="no-underline"
-                     rel="noopener"                href="https://soundcloud.com/mjk618/sets/your-2023-playback"
+                     rel="noopener"
+                     href="https://soundcloud.com/mjk618/sets/your-2023-playback"
                      target="
                _blank">
                         <h2>Soundcloud 2023 Playback - Jatin Kamboj</h2>
                   </a>
             </font>
       </center>
-      <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734976581&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #23027c;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/mjk618" title="Jatin Kamboj" target="_blank" style="color: #23027c; text-decoration: none;">Jatin Kamboj</a> · <a href="https://soundcloud.com/mjk618/sets/your-2023-playback" title="Your 2023 Playback" target="_blank" style="color: #23027c; text-decoration: none;">Your 2023 Playback</a></div>
+      <iframe width="100%"
+              height="450"
+              scrolling="no"
+              frameborder="no"
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1734976581&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      <div
+           style="font-size: 10px; color: #23027c;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+            <a href="https://soundcloud.com/mjk618"
+               title="Jatin Kamboj"
+               target="_blank"
+               style="color: #23027c; text-decoration: none;">Jatin Kamboj</a> · <a
+               href="https://soundcloud.com/mjk618/sets/your-2023-playback"
+               title="Your 2023 Playback"
+               target="_blank"
+               style="color: #23027c; text-decoration: none;">Your 2023 Playback</a></div>
       <br>
       <hr>
-<br>
+      <br>
 
 
       <center>
@@ -362,6 +378,50 @@
       <hr>
       <!-- Reference helper scripts. -->
       <script src="js/handler.js"></script>
+      <script>
+            let deferredPrompt;
+            let interactionCount = 0;
+            let prompted = false; // prevent spamming
+
+            // Save the install event
+            window.addEventListener('beforeinstallprompt', (e) => {
+                  e.preventDefault();
+                  deferredPrompt = e;
+            });
+
+            // Unified handler for interactions
+            async function handleInteraction() {
+                  if (!deferredPrompt || prompted) return;
+
+                  interactionCount++;
+
+                  // Example: show after 2 interactions (tap or scroll)
+                  if (interactionCount === 2) {
+                        prompted = true; // mark so we don’t fire again
+
+                        // optional delay (e.g., 3s after 2nd interaction)
+                        setTimeout(async () => {
+                              deferredPrompt.prompt();
+                              const { outcome } = await deferredPrompt.userChoice;
+                              console.log(`User response: ${outcome}`);
+                              deferredPrompt = null;
+                        }, 3000);
+                  }
+            }
+
+            // Count taps/clicks
+            window.addEventListener('click', handleInteraction);
+
+            // Count scrolls (only first few, to avoid spam on continuous scroll)
+            let scrollTracked = false;
+            window.addEventListener('scroll', () => {
+                  if (!scrollTracked) {
+                        handleInteraction();
+                        scrollTracked = true; // only count first scroll
+                  }
+            }, { passive: true });
+      </script>
+
 </body>
 
 </html>
